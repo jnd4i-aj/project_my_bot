@@ -1,0 +1,108 @@
+<?xml version="1.0" ?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+    <link name="base_link">
+        <inertial>
+            <origin xyz="0.0030572583667421572 -6.550273688609154e-06 0.053416548785980185" rpy="0 0 0"/>
+            <mass value="2.6773206552997073"/>
+            <inertia ixx="0.009013" iyy="0.00931" izz="0.016474" ixy="-1e-06" iyz="0.0" ixz="-0.000285"/>
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+            <mesh filename="file://$(find project_my_bot)/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+            </geometry>
+            <material name="orange"/>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+            <mesh filename="file://$(find project_my_bot)/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+            </geometry>
+        </collision>
+    </link>
+
+    <link name="right_wheel_link">
+        <inertial>
+            <origin xyz="-7.450580374526844e-10 -0.010000000000000037 3.725290215195187e-10" rpy="0 0 0"/>
+            <mass value="0.14608405839192537"/>
+            <inertia ixx="9.6e-05" iyy="0.000183" izz="9.6e-05" ixy="-0.0" iyz="0.0" ixz="-0.0"/>
+        </inertial>
+        <visual>
+            <origin xyz="0.0 0.1 -0.05" rpy="0 0 0"/>
+            <geometry>
+            <mesh filename="file://$(find project_my_bot)/meshes/right_wheel_link.stl" scale="0.001 0.001 0.001"/>
+            </geometry>
+            <material name="black"/>
+        </visual>
+        <collision>
+            <origin xyz="0.0 0.1 -0.05" rpy="0 0 0"/>
+            <geometry>
+            <mesh filename="file://$(find project_my_bot)/meshes/right_wheel_link.stl" scale="0.001 0.001 0.001"/>
+            </geometry>
+        </collision>
+    </link>
+
+    <link name="left_wheel_link">
+        <inertial>
+            <origin xyz="-7.450580374526844e-10 0.010000000000000037 3.725290215195187e-10" rpy="0 0 0"/>
+            <mass value="0.14608405839192537"/>
+            <inertia ixx="9.6e-05" iyy="0.000183" izz="9.6e-05" ixy="0.0" iyz="0.0" ixz="-0.0"/>
+        </inertial>
+        <visual>
+            <origin xyz="-0.0 -0.1 -0.05" rpy="0 0 0"/>
+            <geometry>
+            <mesh filename="file://$(find project_my_bot)/meshes/left_wheel_link.stl" scale="0.001 0.001 0.001"/>
+            </geometry>
+            <material name="black"/>
+        </visual>
+        <collision>
+            <origin xyz="-0.0 -0.1 -0.05" rpy="0 0 0"/>
+            <geometry>
+            <mesh filename="file://$(find project_my_bot)/meshes/left_wheel_link.stl" scale="0.001 0.001 0.001"/>
+            </geometry>
+        </collision>
+    </link>
+
+    <link name="lidar_link">
+        <inertial>
+            <origin xyz="-1.3877787807814457e-17 4.288906000090392e-17 0.012499999999999997" rpy="0 0 0"/>
+            <mass value="1.2484885554906686"/>
+            <inertia ixx="0.000697" iyy="0.000697" izz="0.001264" ixy="0.0" iyz="-0.0" ixz="0.0"/>
+        </inertial>
+        <visual>
+            <origin xyz="-0.03 -0.0 -0.105" rpy="0 0 0"/>
+            <geometry>
+            <mesh filename="file://$(find project_my_bot)/meshes/lidar_link.stl" scale="0.001 0.001 0.001"/>
+            </geometry>
+            <material name="blue"/>
+        </visual>
+        <collision>
+            <origin xyz="-0.03 -0.0 -0.105" rpy="0 0 0"/>
+            <geometry>
+            <mesh filename="file://$(find project_my_bot)/meshes/lidar_link.stl" scale="0.001 0.001 0.001"/>
+            </geometry>
+        </collision>
+    </link>
+
+    <joint name="base_right_wheel_joint" type="continuous">
+        <origin xyz="0.0 -0.1 0.05" rpy="0 0 0"/>
+        <parent link="base_link"/>
+        <child link="right_wheel_link"/>
+        <axis xyz="0.0 -1.0 0.0"/>
+    </joint>
+
+    <joint name="base_left_wheel_joint" type="continuous">
+        <origin xyz="0.0 0.1 0.05" rpy="0 0 0"/>
+        <parent link="base_link"/>
+        <child link="left_wheel_link"/>
+        <axis xyz="0.0 1.0 0.0"/>
+    </joint>
+
+    <joint name="base_lidar_joint" type="fixed">
+        <origin xyz="0.03 0.0 0.105" rpy="0 0 0"/>
+        <parent link="base_link"/>
+        <child link="lidar_link"/>
+    </joint>
+
+</robot>

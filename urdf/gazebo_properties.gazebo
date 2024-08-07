@@ -6,8 +6,9 @@
   <xacro:property name="blue" value="Gazebo/Blue" />
 
   <gazebo>
-    <plugin name="control" filename="libgazebo_ros_control.so"/>
+    <plugin name="control_plugin" filename="libgazebo_ros_control.so"/>
   </gazebo>
+
   <gazebo reference="base_link">
     <material>${orange}</material>
     <mu1>1</mu1>
@@ -35,6 +36,28 @@
     <mu1>0.2</mu1>
     <mu2>0.2</mu2>
     <self_collide>true</self_collide>
+  </gazebo>
+  
+  <gazebo>
+    <plugin name="diff_drive_gazebo_plugin" filename="libgazebo_ros_diff_drive.so">
+
+      <update_rate>50</update_rate>
+
+      <left_joint>base_left_wheel_joint</left_joint>
+      <right_joint>base_right_wheel_joint</right_joint>
+
+      <wheel_separation>0.45</wheel_separation>
+      <wheel_diameter>0.2</wheel_diameter>
+
+      <publish_odom>true</publish_odom>
+      <publish_odom_tf>true</publish_odom_tf>
+      <publish_wheel_tf>true</publish_wheel_tf>
+
+      <odometry_topic>odom</odometry_topic>
+      <odometry_frame>odom</odometry_frame>
+      <robot_base_frame>base_footprint</robot_base_frame>
+
+    </plugin>
   </gazebo>
 
 </robot>

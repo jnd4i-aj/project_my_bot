@@ -13,8 +13,7 @@ def generate_launch_description():
     display_launch_file_path = os.path.join(get_package_share_directory(package_name), 'launch', 'display.launch.py')
 
     display_launch = IncludeLaunchDescription(
-        PythonLaunchDescriptionSource(display_launch_file_path),
-        launch_arguments={'use_sim_time': 'true'}.items())
+        PythonLaunchDescriptionSource(display_launch_file_path))
     
     gazebo_launch_file_path = os.path.join(get_package_share_directory('gazebo_ros'), 'launch', 'gazebo.launch.py')
 

@@ -21,10 +21,10 @@ def generate_launch_description():
             }]
             )
     
-    joint_state_pub = Node(
-        package='joint_state_publisher_gui',
-        executable='joint_state_publisher_gui'
-            )
+    # joint_state_pub = Node(
+    #     package='joint_state_publisher_gui',
+    #     executable='joint_state_publisher_gui'
+    #         )
 
     rviz_config_path = os.path.join(get_package_share_path('project_my_bot'),
                                     'config', 'display.rviz')
@@ -38,7 +38,7 @@ def generate_launch_description():
         )
     
     ld.add_action(robot_state_pub)
-    ld.add_action(joint_state_pub)
+    # ld.add_action(joint_state_pub)
     ld.add_action(rviz)
 
     return ld

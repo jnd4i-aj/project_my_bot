@@ -10,8 +10,8 @@
   </gazebo>
   <gazebo reference="base_link">
     <material>${orange}</material>
-    <mu1>0.2</mu1>
-    <mu2>0.2</mu2>
+    <mu1>1</mu1>
+    <mu2>1</mu2>
     <self_collide>true</self_collide>
     <gravity>true</gravity>
   </gazebo>

@@ -1,0 +1,9 @@
+<?xml version="1.0" ?>
+<robot name="my_autonomous_bot" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+<xacro:include filename="$(find project_my_bot)/urdf/materials.xacro" />
+<xacro:include filename="$(find project_my_bot)/urdf/transformations.trans" />
+<xacro:include filename="$(find project_my_bot)/urdf/gazebo_properties.gazebo" />
+<xacro:include filename="$(find project_my_bot)/urdf/robot_structure.xacro" />
+
+</robot>
